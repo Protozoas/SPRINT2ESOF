@@ -1,0 +1,17 @@
+import pyautogui
+ 
+print('Press Ctrl-C to quit.') #comando para parar o programa
+try:
+     while True:
+         x, y = pyautogui.position() #pega a posição das coordenadas x e y.
+         positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
+         pixelColor = pyautogui.screenshot().getpixel((x,y)) #pega as coordenadas dos pixel e RGB das cores
+         positionStr += ' RGB: (' + str(pixelColor[0]).rjust(3) # as próximas tres linhas indicam os 3 valores do RGB da cor do pixel que são determinados por 3 coordenadas.
+         positionStr += ', ' + str(pixelColor[1]).rjust(3)
+         positionStr += ', ' + str(pixelColor[2]).rjust(3) + ')'
+         print(positionStr, end='')
+         print('\b' * len(positionStr), end='', flush=True) 
+except KeyboardInterrupt:
+     print('\nDone.')
+ #O programa acima mostra as posições do mouse no computador baseado em um sistema de coordenadas x,y e também mostra o RGB da cor do pixel em que o mouse está sobre.
+

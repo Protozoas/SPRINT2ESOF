@@ -1,0 +1,14 @@
+import pyautogui
+ 
+print('Press Ctrl-C to quit.')
+try:
+     while True:
+         x, y = pyautogui.position()
+         positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
+         print(positionStr, end='')
+         print('\b' * len(positionStr), end='', flush=True) #o /b apaga a ultima linha de codigo e para isso ser atualizado no programa é necessário utilizar o flush=True
+except KeyboardInterrupt:
+     print('\nDone.')
+
+     #O programa acima detecta a posição do mouse no computador por meio de um sitema de coordenadas x,y e mostra essas posições instantaneamente para o usuário.
+

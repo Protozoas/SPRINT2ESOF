@@ -1,0 +1,15 @@
+import pyautogui, time  #importando pyautogui para o funcionamento das funções.
+time.sleep(20) #delay de 20s para a realização das funções
+pyautogui.click() #clicar para colocar o programa de desenho em foco colocando as coordenadas certas na função
+distance = 200 
+while distance > 0:
+  pyautogui.dragRel(distance, 0, duration=0.2) # move para a direita
+  distance = distance - 5 #diminuição da distância para que o desenho acabe convergindo e formando a espiral desejada
+  pyautogui.dragRel(0, distance, duration=0.2) # move para baixo
+  pyautogui.dragRel(-distance, 0, duration=0.2) # move para a esquerda
+  distance = distance - 5
+  pyautogui.dragRel(0, -distance, duration=0.2) # move para cima
+
+  #O programa acima desenha uma espiral automaticamente em um programa de desenho escolhido como paint,por exemplo.
+  #Movendo o mouse com o botão esquerdo pressionado tambem automaticamente e,assim,realizando o desenho.
+

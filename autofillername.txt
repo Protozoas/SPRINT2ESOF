@@ -1,0 +1,56 @@
+import pyautogui
+import time
+ 
+nameField = (375, 183) #o usuário colocar dentro das funções as coordenadas dos espaços dos respectivos campos do formulário de preferencia usado o programa visto anteriormente where is the mouse para ser mais especifico e funcional.
+submitButton = (384, 677)
+submitButtonColor = (75, 141, 249)
+submitAnotherLink = (526, 216)
+ 
+formData = [{'name': 'Alice', 'fear': 'eavesdroppers', 'source': 'wand',            #grava as respostas que devem ser dadas no formulario na variavel formdata
+              'robocop': 4, 'comments': 'Tell Bob I said hi.'},
+             {'name': 'Bob', 'fear': 'bees', 'source': 'amulet', 'robocop': 4,
+              'comments': 'n/a'}]
+pyautogui.PAUSE = 10 #delay
+ 
+for person in formData:
+     print('>>> 5 SECOND PAUSE TO LET USER PRESS CTRL-C <<<') #espaço para caso o usuario deseje encerrar o programa antes de começar a executà-lo.
+     time.sleep(10)
+ 
+     while not pyautogui.pixelMatchesColor(submitButton[0], submitButton[1],submitButtonColor):
+         time.sleep(10)
+ 
+         print('Entering %s info...' % (person['name']))
+         pyautogui.click(nameField[0], nameField[1]) #clica no campo name do formulário baseado nas coordenadas previamente colocadas.
+         pyautogui.typewrite(person['name'] + '\t')  #preenche o campo name do formulario.
+         pyautogui.typewrite(person['fear'] + '\t')  #preenche o campo fear do formulario
+         if person['source'] == 'wand': #sequencia de if elses para determinar as respostas e como proceder automaticamente em cada caso de resposta.
+             pyautogui.typewrite(['down', '\t'])
+         elif person['source'] == 'amulet':
+             pyautogui.typewrite(['down', 'down', '\t'])
+         elif person['source'] == 'crystal ball':
+             pyautogui.typewrite(['down', 'down', 'down', '\t'])
+         elif person['source'] == 'money':
+             pyautogui.typewrite(['down', 'down', 'down', 'down', '\t'])
+ 
+         if person['robocop'] == 1:   #mesma coisa dos if elses anteriores
+             pyautogui.typewrite([' ', '\t'])
+         elif person['robocop'] == 2:
+             pyautogui.typewrite(['right', '\t'])
+         elif person['robocop'] == 3:
+             pyautogui.typewrite(['right', 'right', '\t'])
+         elif person['robocop'] == 4:
+             pyautogui.typewrite(['right', 'right', 'right', '\t'])
+         elif person['robocop'] == 5:
+             pyautogui.typewrite(['right', 'right', 'right', 'right', '\t'])
+ 
+         pyautogui.typewrite(person['comments'] + '\t') #preenche o campo comments com as instruções previamente especificadas no formdata.
+         pyautogui.press('enter')  #pressiona o enviar (submit) e completa o preenchimento do formulario
+         print('Clicked Submit.')
+         time.sleep(10)
+         pyautogui.click(submitAnotherLink[0], submitAnotherLink[1]) #Clica no botão voltar ao formulario caso o usuario queira responder novamente
+
+
+         #O programa preenche um formulário automaticamente duas vezes,uma com as informações de Alcie e outra com as informações de Bob e envia ele preenchido.
+         #Tudo de forma automatica baseada nas funções e coordenadas estabelecidas.
+         #O formulário a ser preenchido nesse programa pode ser encontrado em https://docs.google.com/forms/d/e/1FAIpQLScSVDFU76rZvbO_tiIwSt6d9sOK0CZyS9KKMCP6cP5O5W5lVQ/viewform
+

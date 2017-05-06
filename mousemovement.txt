@@ -1,0 +1,7 @@
+import pyautogui
+for i in range(10):
+   pyautogui.moveTo(100, 100, duration=0.25) #move o mouse para essas coordenadas e depois de 0.25s move para a outra e assim por diante até o usuario dar o comando crtlC para interromper a execeção.
+   pyautogui.moveTo(200, 100, duration=0.25)
+   pyautogui.moveTo(200, 200, duration=0.25)
+   pyautogui.moveTo(100, 200, duration=0.25)
+

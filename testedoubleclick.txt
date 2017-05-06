@@ -1,0 +1,4 @@
+import pyautogui
+import time
+pyautogui.doubleClick(10,5) #colocar coordenadas do lugar em que o usuario quer que o mouse se desloque e clique duas vezes
+
